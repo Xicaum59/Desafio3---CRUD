@@ -7,6 +7,7 @@ import org.springframework.beans.BeanUtils;
 import com.xicaum59.desafio3.entities.Client;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
 
 public class ClientDTO {
 	
@@ -16,6 +17,8 @@ public class ClientDTO {
 	private String name;
 	private String cpf;
 	private Double income;
+	
+	@PastOrPresent(message = "Birth date cannot be a future date")
 	private LocalDate birthDate;
 	private Integer children;
 	
