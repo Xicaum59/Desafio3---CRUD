@@ -1,28 +1,19 @@
-package com.xicaum59.desafio3.DTO;
+package com.xicaum59.DTO;
 
 import java.time.LocalDate;
-
-import org.springframework.beans.BeanUtils;
-
-import com.xicaum59.desafio3.entities.Client;
-
-import jakarta.validation.constraints.NotBlank;
 
 public class ClientDTO {
 	
 	private Long id;
-	
-	@NotBlank(message = "Name can not be blank")
 	private String name;
 	private String cpf;
 	private Double income;
 	private LocalDate birthDate;
 	private Integer children;
 	
-	
 	public ClientDTO() {
+		
 	}
-	
 
 	public ClientDTO(Long id, String name, String cpf, Double income, LocalDate birthDate, Integer children) {
 		
@@ -32,10 +23,6 @@ public class ClientDTO {
 		this.income = income;
 		this.birthDate = birthDate;
 		this.children = children;
-	}
-	
-	public ClientDTO(Client client) {
-		BeanUtils.copyProperties(client, this);
 	}
 
 	public Long getId() {

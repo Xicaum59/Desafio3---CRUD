@@ -1,30 +1,34 @@
-package com.xicaum59.desafio3.DTO;
+package com.xicaum59.entities;
 
 import java.time.LocalDate;
 
-import org.springframework.beans.BeanUtils;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-import com.xicaum59.desafio3.entities.Client;
-
-import jakarta.validation.constraints.NotBlank;
-
-public class ClientDTO {
+@Entity
+@Table(name = "tb_client")
+public class Client {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@NotBlank(message = "Name can not be blank")
 	private String name;
+	
+	@Column(unique = true)
 	private String cpf;
-	private Double income;
+	private double income;
 	private LocalDate birthDate;
 	private Integer children;
 	
-	
-	public ClientDTO() {
+	public Client() {
+		
 	}
-	
 
-	public ClientDTO(Long id, String name, String cpf, Double income, LocalDate birthDate, Integer children) {
+	public Client(Long id, String name, String cpf, double income, LocalDate birthDate, Integer children) {
 		
 		this.id = id;
 		this.name = name;
@@ -32,10 +36,6 @@ public class ClientDTO {
 		this.income = income;
 		this.birthDate = birthDate;
 		this.children = children;
-	}
-	
-	public ClientDTO(Client client) {
-		BeanUtils.copyProperties(client, this);
 	}
 
 	public Long getId() {
@@ -62,11 +62,11 @@ public class ClientDTO {
 		this.cpf = cpf;
 	}
 
-	public Double getIncome() {
+	public double getIncome() {
 		return income;
 	}
 
-	public void setIncome(Double income) {
+	public void setIncome(double income) {
 		this.income = income;
 	}
 
@@ -85,6 +85,8 @@ public class ClientDTO {
 	public void setChildren(Integer children) {
 		this.children = children;
 	}
+	
+	
 	
 	
 	
