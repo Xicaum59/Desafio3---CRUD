@@ -1,0 +1,9 @@
+com.xicaum59.desafio3
+com.xicaum59.desafio3.controllers
+com.xicaum59.desafio3.controllers.handlers
+com.xicaum59.desafio3.DTO
+com.xicaum59.desafio3.entities
+com.xicaum59.desafio3.exceptions
+com.xicaum59.desafio3.repositories
+com.xicaum59.desafio3.services
+com.xicaum59.entities

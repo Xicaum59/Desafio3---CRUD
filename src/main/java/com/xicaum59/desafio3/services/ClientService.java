@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.xicaum59.desafio3.DTO.ClientDTO;
 import com.xicaum59.desafio3.entities.Client;
-import com.xicaum59.desafio3.epositories.ClientRepository;
+import com.xicaum59.desafio3.repositories.ClientRepository;
 import com.xicaum59.desafio3.exceptions.ResourceNotFoundException;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -40,7 +40,12 @@ public class ClientService {
 	@Transactional
 	public ClientDTO insert(ClientDTO dto) {
 		Client client = new Client();
-		copyDtoToEntity(dto, client);
+		client.setName(dto.getName());
+		client.setCpf(dto.getCpf());
+		client.setIncome(dto.getIncome());
+		client.setBirthDate(dto.getBirthDate());
+		client.setChildren(dto.getChildren());
+		
 		client = repository.save(client);
 		return new ClientDTO(client);
 		
@@ -71,14 +76,16 @@ public class ClientService {
 		repository.deleteById(id);
 		
 	}
-	
 	private void copyDtoToEntity(ClientDTO dto, Client client) {
-		client.setName(dto.getName());
-		client.setCpf(dto.getCpf());
-		client.setIncome(dto.getIncome());
-		client.setBirthDate(dto.getBirthDate());
-		client.setChildren(dto.getChildren());
+	    client.setName(dto.getName());
+	    client.setCpf(dto.getCpf());
+	    client.setIncome(dto.getIncome());
+	    client.setBirthDate(dto.getBirthDate());
+	    client.setChildren(dto.getChildren());
+	}
+	
+	
 		
 	}
 	
-}
+
